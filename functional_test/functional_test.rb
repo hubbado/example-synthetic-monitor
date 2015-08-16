@@ -5,6 +5,7 @@ require 'mirage/client'
 require 'pry'
 require 'json'
 require 'hashdiff'
+require 'minitest_helper'
 
 class FunctionalTest < Minitest::Test
 
@@ -13,14 +14,6 @@ class FunctionalTest < Minitest::Test
     @mirage = Mirage::Client.new
     @mirage.put('slack', 'Notification received on Slack') { http_method 'POST' }
     @expected_slack_notification_request_body = {"attachments"=> [{"fallback"=>"ALERT: 1 test failed", "color"=>"danger", "title"=>"ALERT: 1 test failed", "fields"=> [{"title"=>"example example of a test which will fail, triggering a notification on Slack", "value"=>"\n\nexpected: 500\n     got: 200\n\n(compared using ==)\n\n# ./spec/example_spec.rb:19\n==================================================="}]}]}
-  end
-
-  def retryable &block
-    yield rescue retry
-  end
-
-  def assert_hashes_equal(expected, actual)
-    assert_equal [], HashDiff.diff(expected, actual)
   end
 
   def assert_notification_sent_to_slack
