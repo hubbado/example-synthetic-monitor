@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/johnboyes/synthetic-monitor.git
-  revision: 43ad3d843ac11ff382f20997159f64b53c2d78f3
+  revision: 0e39b2386ade1cc493b9a10c59b20082c22b6f08
   specs:
-    synthetic_monitor (0.2.0)
+    synthetic_monitor (0.4.0)
       rest-client
       rspec (= 3.2.0)
 
